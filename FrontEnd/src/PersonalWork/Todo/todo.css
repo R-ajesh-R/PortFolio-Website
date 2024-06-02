@@ -1,0 +1,46 @@
+.todo-wrapper::-webkit-scrollbar{
+    display: none;
+}
+
+.todo-wrapper {
+   width: 500px;
+   height: 400px;
+   background-color: white;
+   display: flex;
+   border-radius: 5px;
+   flex-direction: column;
+   align-items: center;
+   overflow-y: scroll;
+   -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.Todo{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 98%;
+    background-color: pink;
+    color: white;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+.Icon{
+    flex-shrink: 0;
+}
+
+.Todo > button{
+    margin: none;
+    outline: none;
+    background-color: pink;
+    color:white;
+    border: none;
+    height: 24px;
+    width: 24px;
+}
+
+.Todo > button > ion-icon{
+    height: 24px;
+    width: 24px;
+}

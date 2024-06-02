@@ -1,0 +1,11 @@
+.Works{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.no-component{
+color: white;
+font-size:xx-large;
+}

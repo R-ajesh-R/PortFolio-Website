@@ -1,0 +1,94 @@
+.flex-column{
+    display: flex;
+    flex-direction: column;
+}
+
+.heading{
+    color: white;
+    margin-bottom: 10px;
+    text-align: center;
+    font-size: xx-large;
+}
+
+.display-grid{
+    width: 500px;
+    height: 500px;
+    background-color: white;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    gap: 1em;
+    background-color: #06021b;
+}
+
+.grid-item{
+    position: relative;
+    transition: transform 1500ms;
+    transform-style: preserve-3d;
+    perspective: 600px;
+}
+
+.grid-item.selected{
+    transform: rotateY(180deg);
+}
+
+.front-card,.back-card{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    border-radius: 5px;
+    background-color: blue;
+    backface-visibility: hidden;
+}
+
+.front-card{
+    opacity: 0.5;
+}
+
+.back-card{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: xx-large;
+    opacity: 1;
+    transform: rotateY(180deg);
+}
+
+.grid-item-prestart{
+    position: relative;
+    background-color: blue;
+    opacity: 0.8;
+    border-radius: 5px;
+}
+
+.flex-row{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+/* #2ae087 */
+.button{
+    width: 200px;
+    border-radius: 5px;
+    box-shadow: 3px 3px 5px gray;
+    border: none;
+    background-color: blue;
+    color: white;
+    font-size: x-large;
+}
+
+.game-win{
+    color:white;
+    margin-top: 10px;
+    text-align: center;
+    font-size: large;
+    animation: go-up 15s ease-in forwards;
+    background-color: green;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+@keyframes go-up {
+    80%{transform: translateY(-700px);}
+    100%{transform: translateY(-650px);}
+}
