@@ -152,8 +152,9 @@ app.post("/api/email", authenticateToken, async (req, res) => {
   }
 });
 app.get("/", (req, res) => {
-  app.use(express.static(path.join(__dirname, "../FrontEnd", "build")));
-  res.sendFile(path.join(__dirname, "../FrontEnd", "index.html"));
+  //   app.use(express.static(path.join(__dirname, "../FrontEnd", "build")));
+  //   res.sendFile(path.join(__dirname, "../FrontEnd", "index.html"));
+  return res.json({ message: "jskdlfkjsadhfkjlasdhlk" });
 });
 app.post("/token", (req, res) => {
   const user = uuidv4();
