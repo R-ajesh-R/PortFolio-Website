@@ -5,7 +5,6 @@ import { useLocation, useSearchParams } from 'react-router-dom'
 const Works = (props) => {
   const location = useLocation();
   const [searchParams, setSearchParams] = useSearchParams(); 
-  console.log('08997ytfghjk',searchParams,searchParams.get('component'))
   const component=searchParams.get('component')
   if(!component)
   return React.createElement(
