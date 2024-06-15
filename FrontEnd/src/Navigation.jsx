@@ -3,6 +3,9 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import HomeIcon from '@mui/icons-material/Home';
 import ContactsIcon from '@mui/icons-material/Contacts';
 import InfoIcon from '@mui/icons-material/Info';
+import axios from "axios"
+import { useDispatch } from 'react-redux';
+import { setID, setToken } from './popupSlice';
 function handleMouseOver(e){
   const element=document.getElementsByClassName('navigation-name')[0];
   const text=element.innerText.split('');
@@ -14,12 +17,16 @@ function handleMouseOver(e){
     element.appendChild(span)
   })
 }
-function handleContactMe(setPopupOpen){
+async function handleContactMe(setPopupOpen,dispatch){
+  const {data}=await axios.post('http://localhost:5010/token');
+  console.log('dfsdfa',data)
+  dispatch(setID(data.id));
+  dispatch(setToken(data.accessToken))
   setPopupOpen(true)
   document.getElementById('root').style.setProperty("position","fixed");
 }
 const Navigation = ({setPopupOpen}) => {
-  
+  const dispatch=useDispatch()
   return (
     <div className='wrapper' style={{position:'fixed',top:'0px',left:'0px',right:'0px',zIndex:'1000'}}>
       <nav className='navigation'>
@@ -50,7 +57,7 @@ const Navigation = ({setPopupOpen}) => {
               <span className='popup-circle' style={{'--item':2}}></span>
             </a>
         </li>
-        <li className='list' onClick={()=>handleContactMe(setPopupOpen)}>
+        <li className='list' onClick={()=>handleContactMe(setPopupOpen,dispatch)}>
             <a href='#'>
               <span className='navigation-icon'><ContactsIcon /></span>
               <span className='navigation-text'>Contact Me</span>

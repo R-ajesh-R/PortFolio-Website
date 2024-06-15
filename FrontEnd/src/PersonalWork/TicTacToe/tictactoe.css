@@ -1,0 +1,47 @@
+.board{
+    width: inherit;
+    height: inherit;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    grid-template-columns: repeat(3,auto);
+}
+
+.cell{
+    background-color: white;
+    width: 100px;
+    height: 100px;
+    border: 3px solid #06021b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: xx-large;
+    cursor: pointer;
+}
+
+.loading{
+    width: 100px;
+    height: 100px;
+    border: 2px solid white;
+    border-radius: 50%;
+    border-bottom: 3px solid black;
+    animation: loader 2s ease infinite;
+}
+
+@keyframes loader {
+    0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.showOnHover{
+ content-visibility: hidden;
+}
+
+.showOnHover:hover{
+    content-visibility: visible;
+    color: grey;
+}
+
+.cursor-not-allowed{
+    cursor: not-allowed;
+}
