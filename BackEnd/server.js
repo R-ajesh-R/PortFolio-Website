@@ -154,6 +154,7 @@ app.post("/token", (req, res) => {
 });
 // server.listen(5010);
 dummy.get("/", (req, res) => {
-  res.send("Hello World!");
+  res.send("Hello World");
 });
-dummy.listen(5010);
+const port = process.env.NODE_ENV || 5010;
+dummy.listen(port);
