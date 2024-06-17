@@ -9,20 +9,12 @@ const axios = require("axios");
 const cors = require("cors");
 require("dotenv").config();
 const app = express();
+const dummy = express();
 app.use(cors());
+dummy.use(cors());
 app.use(express.json());
-const allowCrossDomain = (req, res, next) => {
-  res.header("Access-Control-Allow-Origin", req.headers.origin);
-  res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
-  res.header("Access-Control-Allow-Credentials", true);
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Content-Type, Token, MODE, Environment, OwnerId, EventName, CustomHeader,X-CheckSum"
-  );
-  next();
-};
+dummy.use(express.json());
 
-app.use(allowCrossDomain);
 let Rooms = { 123: [1, 2] };
 const playerInfo = {};
 const server = http.createServer(app);
@@ -160,4 +152,8 @@ app.post("/token", (req, res) => {
   const jwToken = jwt.sign(user, process.env.ACCESS_TOKEN);
   res.json({ accessToken: jwToken, id: user });
 });
-server.listen(5010);
+// server.listen(5010);
+dummy.get("/", (req, res) => {
+  res.send("Hello World!");
+});
+dummy.listen(5010);
