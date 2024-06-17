@@ -14,7 +14,7 @@ app.use(cors());
 dummy.use(cors());
 app.use(express.json());
 dummy.use(express.json());
-
+console.log("uihjk.m,");
 let Rooms = { 123: [1, 2] };
 const playerInfo = {};
 const server = http.createServer(app);
