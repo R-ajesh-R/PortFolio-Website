@@ -157,4 +157,4 @@ dummy.get("/", (req, res) => {
   res.send("Hello World");
 });
 const port = process.env.NODE_ENV || 5010;
-dummy.listen(port);
+server.listen(port);
