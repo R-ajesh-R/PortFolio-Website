@@ -45,3 +45,26 @@
 .cursor-not-allowed{
     cursor: not-allowed;
 }
+
+.gap{
+    justify-content: space-between;
+    align-items: center;
+}
+
+.room-button{
+    width: 50%;
+    border-radius: 10px;
+    outline: none;
+}
+
+.room-button:active{
+    transform: translateY(4px);
+}
+
+.room-input{
+    width: 100%;
+    outline: none;
+    border-radius: 5px;
+    padding-left: 20px;
+    margin-bottom: 10px;
+}

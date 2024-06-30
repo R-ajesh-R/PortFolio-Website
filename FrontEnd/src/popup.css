@@ -1,0 +1,53 @@
+form > *:not(div){
+    color: white;
+    display: flex;
+    margin: 5px 0px;
+}
+form{
+    padding: 20px 40px;
+}
+form > input,form > textarea{
+    width: 100%;
+    outline: none;
+    color: black;
+    padding: 0px 5px;
+}
+form > button{
+    width: 40%;
+    color: black;
+    border: none;
+    display: flex;
+    justify-content: center;
+    border-radius: 2px;
+    resize: none;
+}
+
+form > button:active{
+    transform: translateY(4px);
+}
+
+.error-style{
+    color: Red;
+    display:flex;
+    justify-content:flex-start;
+    align-items:center;
+    width: 90%;
+}
+.popup-form1{
+    padding: 20px 20px 0px 20px;
+    z-index: 10;
+    position: relative;
+}
+.loader{
+    height: 10px;
+    width: 10px;
+    border: 3px solid black;
+    border-radius: 50%;
+    border-bottom: 3px solid transparent;
+    animation: loader 2s ease infinite;
+}
+
+@keyframes loader {
+    0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

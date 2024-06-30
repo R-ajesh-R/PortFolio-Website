@@ -82,7 +82,7 @@
     margin-top: 10px;
     text-align: center;
     font-size: large;
-    animation: go-up 15s ease-in forwards;
+    /* animation: go-up 15s ease-in forwards; */
     background-color: green;
     border-radius: 5px;
     padding: 10px;
@@ -97,3 +97,19 @@
     80%{transform: translateY(-700px);}
     100%{transform: translateY(-650px);}
 }
+
+@media (max-width: 480px) {
+    .display-grid{
+        width: 400px;
+        height: 400px;
+    }
+    .flex-row{
+        flex-direction: column;
+    }
+    .button{
+        width: 400px;
+    }
+    .flex-row p{
+        display: flex;
+    }
+  }

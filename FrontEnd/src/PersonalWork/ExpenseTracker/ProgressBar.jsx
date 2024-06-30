@@ -2,7 +2,7 @@ import React from 'react'
 const variants={
     '50': 'green',
     '75': 'yellow',
-    '100': 'red'
+    '100': '#9d0505'
 }
 const ProgressBar = ({percentage}) => {
   let color;
@@ -13,10 +13,10 @@ const ProgressBar = ({percentage}) => {
   else if(percentage>=75)
     color=variants['100']
   return (
-    <div className='flex-center'>
+    <div className='flex-center progressbar'>
         <div className='total-bar'>
-            <div style={{background: `${color}`,'--filledPortion': `${percentage}%`}} className={`progressed-bar ${percentage >= 100 && 'full-bar'}`}>
-                {percentage && <span style={{marginRight:'5px'}}>{percentage}%</span>}
+            <div style={{background: `${color}`,'--filledPortion': `${Math.min(percentage,100)}%`}} className={`progressed-bar ${percentage >= 100 && 'full-bar'}`}>
+                {percentage && <span style={{marginRight:'5px',display:'none'}}>{percentage}%</span>}
             </div>
         </div>
     </div>

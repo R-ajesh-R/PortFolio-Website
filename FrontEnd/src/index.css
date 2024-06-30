@@ -254,7 +254,7 @@ li:hover > .navigation-circle{
   transform: translateY(-37px) scale(1) !important; 
   width: 100px;
 }
-.main-page,.main-page2{
+.main-page,.main-page2,.main-page3{
   width: 100%;
   height: 100vh;
   display: flex;
@@ -266,7 +266,7 @@ li:hover > .navigation-circle{
   /* translate: 0 calc(-1% * ((max(var(--scroll),25)-25)*100/75)); */
   translate: 0 calc(-1% * (max(var(--scroll), 25) - 25) * 100 / 75);
 }
-.main-page2{
+.main-page2,.main-page3{
   justify-content: center;
   align-items: center;
 }
@@ -527,7 +527,7 @@ li:hover > .navigation-circle{
 }
 
 .popup-content{
-  height: 400px;
+  min-height: 400px;
   width: 400px;
   opacity: 1;
   background-color: rgba(255, 255, 255,0.02);
@@ -555,7 +555,6 @@ li:hover > .navigation-circle{
 .popup-form{
   z-index: 10;
   position: relative;
-  padding: 20px;
 }
 @property --popup-line{
   syntax: '<angle>';
@@ -664,4 +663,83 @@ body::-webkit-scrollbar {
 #next{
   left:unset;
   right:50px;
+}
+
+@media (max-width: 480px) {
+  .main-page{
+    flex-direction: column;
+  }
+  .leftPanel{
+    flex: 100%;
+  }
+  
+  .rightPanel{
+    flex: 100%;
+  }
+  .primary,.primary1,.secondary li{
+    font-size: 30px;
+  }
+  .wrapper-main{
+    width: 93vw;
+    padding-left: 0px;
+  }
+  .secondary{
+    height: 60px;
+    line-height: 60px;
+  }
+  .secondary li span::before{
+    height: 60px;
+  }
+  @keyframes slide {
+    100% {
+        top: -110px;
+    }
+  }
+  .navigation-name{
+    display: none;
+  }
+  .navigation{
+    padding: 0px;
+  }
+  .wrapper{
+    position: fixed;
+    bottom: 0px;
+    top: auto !important;
+  }
+  .animate-left-out{
+    animation-range: contain 450px;
+  }
+  .primary1{
+    width: 93vw;
+    padding-left: 0px;
+  }
+  .slider{
+    width: 100vw;
+  }
+  #inner-mouse{
+    display: none;
+  }
+  .primary{
+    padding-top: 7px;
+  }
+  @keyframes slide {
+    100% {
+        top: -120px;
+    }
+  }
+}
+
+.white{
+  color: white;
+}
+
+.size-full{
+  height: 100%;
+  width: 100%;
+}
+
+.flex-row-center{
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

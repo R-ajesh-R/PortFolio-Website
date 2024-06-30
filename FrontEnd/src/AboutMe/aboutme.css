@@ -1,0 +1,64 @@
+.aboutme-left-right,.aboutme-right-left{
+    flex: 50%;
+    display: flex;
+    padding: 50px;
+    height: inherit;
+}
+.aboutme-left-right{
+    align-items: end;
+    flex-direction: column;
+}
+.aboutme-right-left{
+    align-items: start;
+    flex-direction: column;
+}
+.wd-30,.wd-40{
+    height: 75%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+.wd-30{
+    width: 30%;
+}
+.wd-40{
+    width: 40%;
+}
+.flex-row{
+    display: flex;
+}
+
+.express svg{
+    height: 50px;
+    width: 100px;
+}
+
+@media (max-width:480px) {
+    .aboutme-left-right,.aboutme-right-left{
+        flex: 100%;
+        padding: 0px;
+        display: block;
+    }
+    .wd-30,.wd-40{
+        width: 100%;
+        height: inherit;
+    }
+    .wd-40 > div > p,.wd-30 > div > p{
+        margin: 0px 20px;
+        display: flex;
+        justify-content: center;
+    }
+    .wd-40 .flex-row,.wd-30 .flex-row{
+        align-items: start;
+    }
+    .wd-30 .flex-row{
+        flex-direction: row;
+    }
+    .aboutme-right-left{
+        margin-bottom: 10px;
+    }
+    .wd-30{
+        margin: 10px 0px;
+        padding-bottom: 20px;
+    }
+}
