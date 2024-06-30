@@ -4,6 +4,7 @@ import Popup from './Popup.jsx';
 import Home from './Home.jsx';
 import Works from './Works.jsx';
 import { Route, Routes } from 'react-router-dom';
+import Navigation from './Navigation.jsx';
 function App() {
   const [popupOpen,setPopupOpen]=useState(false);
   useEffect(()=>{
@@ -27,6 +28,7 @@ function App() {
         <div id='inner-mouse'>
 
         </div>
+        <Navigation setPopupOpen={setPopupOpen} />
         <Routes>
          <Route path='/' element={<Home setPopupOpen={setPopupOpen} />}/>
          <Route path="/works" element={<Works componentToBeRendered="MultipleEmail"/>} />

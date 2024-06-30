@@ -43,9 +43,14 @@
     justify-content: center;
 }
 
+.progressbar{
+    width: 100%;
+    height: 15px;
+}
+
 .total-bar{
     height: 15px;
-    width: 70%;
+    width: 95%;
     background-color: whitesmoke;
     border-radius: 40px;
     margin: 10px 0px;
@@ -78,4 +83,162 @@
 
 .crd-gray{
     background-color: 	rgb(211,211,211);
+}
+
+.expense-wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.budget{
+    background-color: rgba(255, 255, 255,0.02);
+    box-shadow: .25em .3em 1em hsl(100, 100%, 100%);
+    color: white;
+    box-sizing: border-box;
+    border-radius: 10px;
+    flex: 1 1 48%;
+    max-width: 800px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.budget > label{
+    width: 90%;
+}
+
+.flex-column-center{
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    flex-direction: column;
+}
+
+.budget-label{
+    display: block;
+    width: 100%;
+}
+
+.budget > *{
+    /* display: block;
+    width: auto; */
+    margin: 10px 10px;
+}
+
+.budget > input,.budget > button,.budget > select{
+    width: 90%;
+    border-radius: 5px;
+    outline: none;
+}
+
+.flex-space-between{
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+}
+
+
+.flex-gap{
+    display: flex;
+    gap: 32px;
+    margin: 20px;
+    box-sizing: border-box;
+}
+
+.expense-content{
+    max-width: 1500px;
+    width: 100%;
+    margin-inline: auto;
+    padding: 24px;
+}
+
+.expense-items{
+    flex: 1 1 32.2%;
+    max-width: 600px;
+}
+
+.cards{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.grid-md{
+    display: grid;
+    width: 97.5%;
+    gap: 24px;
+    margin: 20px;
+}
+
+.table,table{
+    overflow-x: auto;
+}
+
+thead>tr:nth-child(odd){
+    background-color: hsl(190 60% 98%);
+    color: black;
+}
+th{
+    padding: 8px;
+    border-radius: 5px 5px 0px 0px;
+}
+
+thead{
+    display: table-header-group;
+    vertical-align: middle;
+    unicode-bidi: isolate;
+    border-color: inherit;
+}
+
+tr:nth-child(odd){
+    background-color: hsla(183,74%,44%,0.4);
+}
+
+tr:nth-child(even){
+    background-color: hsla(183,74%,44%,0.3);
+}
+
+tr{
+    text-align: center;
+}
+
+tr > td{
+    color: white;
+    padding: 8px;
+}
+
+table{
+    width: 100%;
+}
+
+.button-primary-expense{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:5px;
+    padding:8px;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+.button-primary-expense:active{
+    transform: translateY(4px);
+}
+
+.error-style{
+    color: Red;
+    display:flex;
+    justify-content:flex-start;
+    align-items:center;
+    width: 90%;
+}
+
+@media (max-width:480px) {
+    .flex-gap{
+        flex-direction: column;
+    }
+    .cards{
+        grid:none;
+    }
 }

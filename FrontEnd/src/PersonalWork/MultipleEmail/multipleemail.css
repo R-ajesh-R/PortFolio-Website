@@ -97,3 +97,9 @@
       -webkit-mask-position: -50%;
     }
   }
+
+  @media (max-width: 480px) {
+    .multipleemail-input{
+        min-width: 300px;
+    }
+  }

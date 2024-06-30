@@ -125,8 +125,8 @@ const MemoryGame = () => {
       <div style={{width:'100%',background:'black',marginTop:'10px'}} className='flex-row'>
         {!gameWinStatus ? gameStart ? <button className='button' onClick={stopGame} >Stop</button> : <button className='button' onClick={startGameHandler}>Start</button> : null}
         {gameWinStatus && <button className='button' onClick={resetGame} >Reset</button>}
-        <p style={{color:'white'}}>Number of Moves: {movesAndTimer.moves}</p>
-        <p style={{color:'white'}}>Timer: {movesAndTimer.time}</p>
+        <p style={{color:'white'}}>Number of Moves: <span>{movesAndTimer.moves}</span></p>
+        <p style={{color:'white'}}>Timer: <span>{movesAndTimer.time}</span></p>
       </div>
       {gameWinStatus && <h5 className='game-win'>You have Successfully Completed the game!!</h5>}
     </div>

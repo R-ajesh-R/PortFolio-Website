@@ -6,6 +6,7 @@ import InfoIcon from '@mui/icons-material/Info';
 import axios from "axios"
 import { useDispatch } from 'react-redux';
 import { setID, setToken } from './popupSlice';
+import { useNavigate } from 'react-router-dom';
 function handleMouseOver(e){
   const element=document.getElementsByClassName('navigation-name')[0];
   const text=element.innerText.split('');
@@ -18,7 +19,7 @@ function handleMouseOver(e){
   })
 }
 async function handleContactMe(setPopupOpen,dispatch){
-  const {data}=await axios.post('http://localhost:5010/token');
+  const {data}=await axios.post('https://portfolio-website-1-m76o.onrender.com/token');
   console.log('dfsdfa',data)
   dispatch(setID(data.id));
   dispatch(setToken(data.accessToken))
@@ -26,14 +27,15 @@ async function handleContactMe(setPopupOpen,dispatch){
   document.getElementById('root').style.setProperty("position","fixed");
 }
 const Navigation = ({setPopupOpen}) => {
-  const dispatch=useDispatch()
+  const dispatch=useDispatch();
+  let navigate = useNavigate();
   return (
-    <div className='wrapper' style={{position:'fixed',top:'0px',left:'0px',right:'0px',zIndex:'1000'}}>
+    <div className='wrapper' style={{top:'0px',left:'0px',right:'0px',zIndex:'1000'}}>
       <nav className='navigation'>
       <div className='navigation-name'>Rajesh</div>
       <div className='right-panel'>
       <ul>
-        <li className='list'>
+        <li className='list' onClick={()=>navigate('/')}>
           <a href='#'>
             <span className='navigation-icon' ><HomeIcon /></span>
             <span className='navigation-text'>Home</span>
@@ -41,16 +43,16 @@ const Navigation = ({setPopupOpen}) => {
             <span className='popup-circle' style={{'--item':0}}></span>
           </a>
         </li>
-        <li className='list'>
-          <a href='#'>
-              <span className='navigation-icon' ><AccountCircleIcon /></span>
-              <span className='navigation-text'>Profile</span>
+        <li className='list' onClick={()=>{if(window.location.href!=='/')navigate('/')}}>
+          <a href='#main-page2'>
+              <span className='navigation-icon' ><ion-icon name="book"></ion-icon></span>
+              <span className='navigation-text'>My Works</span>
               <span className='navigation-circle'></span>
               <span className='popup-circle' style={{'--item':1}}></span>
             </a>
         </li>
-        <li className='list'>
-            <a href='#'>
+        <li className='list' onClick={()=>{if(window.location.href!=='/')navigate('/')}}>
+            <a href='#main-page3'>
               <span className='navigation-icon'><InfoIcon /></span>
               <span className='navigation-text'>About Me</span>
               <span className='navigation-circle'></span>
@@ -60,7 +62,7 @@ const Navigation = ({setPopupOpen}) => {
         <li className='list' onClick={()=>handleContactMe(setPopupOpen,dispatch)}>
             <a href='#'>
               <span className='navigation-icon'><ContactsIcon /></span>
-              <span className='navigation-text'>Contact Me</span>
+              <span className='navigation-text'>Say Hi!</span>
               <span className='navigation-circle'></span>
               <span className='popup-circle' style={{'--item':3}}></span>
             </a>

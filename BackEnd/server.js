@@ -9,12 +9,20 @@ const axios = require("axios");
 const cors = require("cors");
 require("dotenv").config();
 const app = express();
-const dummy = express();
 app.use(cors());
-dummy.use(cors());
 app.use(express.json());
-dummy.use(express.json());
-console.log("uihjk.m,");
+const allowCrossDomain = (req, res, next) => {
+  res.header("Access-Control-Allow-Origin", req.headers.origin);
+  res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
+  res.header("Access-Control-Allow-Credentials", true);
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Content-Type, Token, MODE, Environment, OwnerId, EventName, CustomHeader,X-CheckSum"
+  );
+  next();
+};
+
+app.use(allowCrossDomain);
 let Rooms = { 123: [1, 2] };
 const playerInfo = {};
 const server = http.createServer(app);
@@ -81,14 +89,22 @@ io.on("connection", (socket) => {
   );
   socket.on("lost", ({ roomNumberValue }) => {
     socket.to(roomNumberValue).emit("lost");
+    delete Rooms[roomNumberValue];
+  });
+  socket.on("refresh", ({ roomNumberValue }) => {
+    socket.to(roomNumberValue).emit("refresh");
+    console.log(`${"Callend"} ${roomNumberValue}1`);
+    // socket.leave(roomNumberValue);
+    delete Rooms[roomNumberValue];
+  });
+  socket.on("leaveRoom", ({ roomNumberValue }) => {
+    socket.leave(roomNumberValue);
   });
   socket.on("draw", ({ roomNumberValue }) => {
     socket.to(roomNumberValue).emit("draw");
-  });
-  socket.on("disconnect", ({ roomNumberValue }) => {
-    console.log("called", roomNumberValue, Rooms[roomNumberValue]);
     delete Rooms[roomNumberValue];
   });
+  socket.on("disconnect", ({ roomNumberValue }) => {});
 });
 var transporter = nodemailer.createTransport({
   service: "gmail",
@@ -102,12 +118,6 @@ var transporter = nodemailer.createTransport({
   tls: {
     rejectUnauthorized: false,
   },
-});
-app.get("/api/worklist", (req, res) => {
-  try {
-  } catch (error) {
-    console.log("Error While getting worklist", e);
-  }
 });
 function authenticateToken(req, res, next) {
   try {
@@ -137,24 +147,36 @@ app.post("/api/email", authenticateToken, async (req, res) => {
       text: `Hi I am ${req.body.name},\n${req.body.message}`,
     };
     const sendEmail = await transporter.sendMail(mailOptions);
-    res.status(200).json({ ResponseStatus: "Message Sent Successfully!!" });
+    res
+      .status(200)
+      .json({ ResponseStatus: "Message Sent Successfully!!", ...sendEmail });
   } catch (error) {
     console.log("Error in Post of Email", error);
-    // res.status(400).json({ResponseStatus:"Unable to send Email, Please try again later..."})
   }
 });
 app.get("/", (req, res) => {
   app.use(express.static(path.join(__dirname, "../FrontEnd", "dist")));
-  res.sendFile(path.join(__dirname, "../FrontEnd", "index.html"));
+  res.sendFile(path.join(__dirname, "../FrontEnd", "dist", "index.html"));
 });
 app.post("/token", (req, res) => {
   const user = uuidv4();
   const jwToken = jwt.sign(user, process.env.ACCESS_TOKEN);
   res.json({ accessToken: jwToken, id: user });
 });
-// server.listen(5010);
-dummy.get("/", (req, res) => {
-  res.send("Hello World");
-});
-const port = process.env.NODE_ENV || 5010;
-server.listen(port);
+server.listen(5010);
+
+// if(Rooms.hasOwnProperty(roomNumber) && Rooms[roomNumber].length===2){
+//     console.log('idsfjalsdjf',socket.id)
+//     socket.emit("room",{message: 'No more space in room'})
+// }
+// else if(!Rooms.hasOwnProperty(roomNumber)){
+//     const newObj={
+//         [roomNumber]: [socket.id]
+//     }
+//     Rooms={...newObj}
+//     socket.emit("room",{message: 'Please wait while your friend is trying to join...'})
+// }else if(Rooms.hasOwnProperty(roomNumber) && Rooms[roomNumber].length===1 && socket.id!==Rooms[roomNumber][0]){
+//     Rooms[roomNumber].push(socket.id);
+//     socket.broadcast.to('312').emit("room",{message: 'Let\'s Begin'});
+//     // socket.emit("begin",{message: 'Let\'s Begin'});
+// }
