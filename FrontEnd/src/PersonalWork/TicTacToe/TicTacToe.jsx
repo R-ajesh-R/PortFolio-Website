@@ -45,7 +45,7 @@ const TicTacToe = () => {
         setError('')
         setLoading(false);
         setWaitingForConnection(false);
-        resetState();
+        // resetState();
         if(res.hasOwnProperty('turn')){
           setTurn('X');
           setIsYourTurn(true);
@@ -61,12 +61,6 @@ const TicTacToe = () => {
       alert('There is a connection problem to your partner so logging you back to room selection screen...');
       const room=roomNumberValue;
       resetState();
-      setWaitingForConnection(true);
-      setLoading(false);
-      setTurn('');
-      setIsYourTurn('');
-      setRoomNumberValue('');
-      setWinner(null);
       socket.emit('leaveRoom',{room})
     })
     socket.on('made-move',res=>{
@@ -81,16 +75,18 @@ const TicTacToe = () => {
       setIsYourTurn(false);
       setTimeout(()=>{
         socket.on('disconnect',{roomNumberValue});
-        setWaitingForConnection(true);
-      },3000)
+        // setWaitingForConnection(true);
+        resetState();
+      },7000)
     });
     socket.on('draw',res=>{
       setIsYourTurn(false);
       setWinner('draw');
       setTimeout(()=>{
         socket.on('disconnect',{roomNumberValue});
-        setWaitingForConnection(true);
-      },3000)
+        // setWaitingForConnection(true);
+        resetState();
+      },7000)
     })
   },[socket]);
   function resetState(){
@@ -101,9 +97,15 @@ const TicTacToe = () => {
      setTracker(()=>{
       return Array(9).fill("")
     });
-    setError('')
+    setError('');
+    setWaitingForConnection(true);
+    setLoading(false);
+    setTurn('');
+    setIsYourTurn('');
+    setRoomNumberValue('');
   }
   function refreshHandler(e){
+    e.preventDefault();
     alert('If you refresh connection will be lost to both you and your partner... Do you still wish to proceed?');
     socket.emit('refresh',{roomNumberValue});
     e.returnValue='If you refresh connection will be lost to both you and your partner... Do you still wish to proceed?';
@@ -150,8 +152,9 @@ const TicTacToe = () => {
         setWinner('draw');
         setTimeout(()=>{
           socket.on('disconnect',{roomNumberValue});
-          setWaitingForConnection(true);
-        },3000)
+          // setWaitingForConnection(true);
+          resetState();
+        },7000)
       }
     }
     if(checkIfWon){
@@ -159,8 +162,9 @@ const TicTacToe = () => {
         setWinner(turn);
         setTimeout(()=>{
           socket.on('disconnect',{roomNumberValue});
-          setWaitingForConnection(true);
-        },3000)
+          // setWaitingForConnection(true);
+          resetState();
+        },7000)
     }
     return(board.map((rows,idx)=>{
       return rows.map((column,index)=>{

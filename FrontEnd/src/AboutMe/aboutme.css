@@ -2,7 +2,8 @@
     flex: 50%;
     display: flex;
     padding: 50px;
-    height: inherit;
+    height: 120%;
+    justify-content: space-around;
 }
 .aboutme-left-right{
     align-items: end;
@@ -26,6 +27,7 @@
 }
 .flex-row{
     display: flex;
+    height: 48px;
 }
 
 .express svg{
@@ -38,18 +40,19 @@
         flex: 100%;
         padding: 0px;
         display: block;
+        width: 100%;
     }
     .wd-30,.wd-40{
         width: 100%;
-        height: inherit;
     }
     .wd-40 > div > p,.wd-30 > div > p{
         margin: 0px 20px;
         display: flex;
-        justify-content: center;
+        justify-content: space-around;
     }
     .wd-40 .flex-row,.wd-30 .flex-row{
-        align-items: start;
+        align-items: center;
+        justify-content: space-around;
     }
     .wd-30 .flex-row{
         flex-direction: row;
@@ -58,7 +61,7 @@
         margin-bottom: 10px;
     }
     .wd-30{
-        margin: 10px 0px;
-        padding-bottom: 20px;
+        margin: 60px 0px;
+        padding-bottom: 100px;
     }
 }

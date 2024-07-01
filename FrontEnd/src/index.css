@@ -652,7 +652,7 @@ body::-webkit-scrollbar {
 #next,#previous{
   position: absolute;
   top:40%;
-  color: white;
+  color: rebeccapurple;
   background-color: transparent;
   left:50px;
   border: none;
