@@ -77,12 +77,12 @@
     font-size: x-large;
 }
 
-.game-win,.game-lose{
-    color:white;
+.game-win,.game-lose,.game-draw{
+    color:black;
     margin-top: 10px;
     text-align: center;
     font-size: large;
-    /* animation: go-up 15s ease-in forwards; */
+    /* animation: go-up 7s ease-in forwards; */
     background-color: green;
     border-radius: 5px;
     padding: 10px;

@@ -8,19 +8,17 @@ const AboutMeLeft = () => {
           <p style={{marginBottom:'5px'}}>
             <strong>Languages Spoken</strong>
           </p>
+          {/* <br /> */}
           <ul>
-              <li className='flex-row' style={{width:'224px'}}><i>English</i><p style={{whiteSpace:'nowrap'}}>Read, Write, Speak</p></li>
-              <br />
-              <li className='flex-row' style={{width:'224px'}}><i>Tamil</i><p style={{whiteSpace:'nowrap'}}>Read, Write, Speak</p></li>
-              <br />
+              <li className='flex-row'><i>English</i><p style={{whiteSpace:'nowrap'}}>Read, Write, Speak</p></li>
+              <li className='flex-row'><i>Tamil</i><p style={{whiteSpace:'nowrap'}}>Read, Write, Speak</p></li>
           </ul>
         </div>
         <div>
           <div className='flex-row'>
               <p><strong>FullName</strong></p>
               <p>Rajesh R</p></div>
-          <br />
-          <div className="flex-row" style={{width:'224px'}}>
+          <div className="flex-row">
               <p style={{whiteSpace:'nowrap'}}><strong>Birth Date</strong></p>
               <p style={{whiteSpace:'nowrap',bottom:'0px'}}>January 6th, 2000</p>
           </div>

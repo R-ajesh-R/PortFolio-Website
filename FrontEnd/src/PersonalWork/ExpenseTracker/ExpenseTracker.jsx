@@ -21,17 +21,23 @@ const ExpenseTracker=()=>{
       return []
   });
   const [viewBreakUp,setViewBreakUp]=useState({value:false,id:''});
-  // console.log('bdskjfa',budget,expense,viewBreakUp)
   useEffect(()=>{
     let budgetValue=JSON.stringify(budget);
     let expenseValue=JSON.stringify(expense);
     localStorage.setItem('expenseValue',expenseValue);
     localStorage.setItem('budgetValue',budgetValue);
-  },[budget,expense])
+  },[budget,expense]);
+  function handleClearData(){
+    alert('Do You wish to clear all data..?');
+    localStorage.removeItem('expenseValue');
+    localStorage.removeItem('budgetValue');
+    setBudget([]);
+    setExpense([]);
+  }
   return (
   <div style={{width:'100vw',height:'100vh'}}>
     <div style={{minHeight:'20px',width:'100%',display:'flex',padding:'5px 60px',boxSizing:'border-box',color:'white',justifyContent:'end'}}>
-      <button className='button-primary-expense'>Clear All Data<p style={{display:'flex'}}><DeleteIcon /></p></button>
+      <button onClick={handleClearData} className='button-primary-expense'>Clear All Data<p style={{display:'flex'}}><DeleteIcon /></p></button>
     </div>
     <div className="expense-content">
       <div className="flex-gap">

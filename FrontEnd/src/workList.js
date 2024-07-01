@@ -8,19 +8,11 @@ export const workList=[
         description: 'Interactive game component designed to challenge user\'s Memory skills...'
     },
     {
-        title: 'Multiple\nSelect',
-        description: 'The autocomplete component is designed for users to select a wide range of values...'
-    },
-    {
-        title: 'Auto\nComplete',
-        description: 'The autocomplete component is designed for users to find and select options from large set of data.'
+        title: 'Expense\nTracker',
+        description: 'Expense Tracker app is designed for users to track their budget every month...'
     },
     {
         title: 'TicTacToe',
         description: 'A Multiplayer game component designed to have some fun with your friends😅'
-    },
-    {
-        title: 'TodoList',
-        description: 'Intresting component that helps users with personal productivity by traching tasklist easily.'
     }
 ]

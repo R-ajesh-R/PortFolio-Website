@@ -43,11 +43,11 @@ const loadSlider=(active,items)=>{
         translateProperty=120,rotateProperty='-1deg',operator='+';      
       items[i].style.transform=`translate(${translateProperty*stt}px,-50%) scale(${1-0.2*stt}) perspective(16px) rotateY(${`${rotateProperty}`})`;
       items[i].style.zIndex=-stt;
-      // items[i].style.display='block' //newlyadded
       items[i].style.filter='blur(5px)';
-      console.log('t44erfsd',width,document.documentElement.clientWidth)
-      if(width > 600)
-      items[i].style.opacity=stt > 2 ? 0 : 0.6;
+      if(width > 600){
+        items[i].style.opacity=stt > 2 ? 0 : 0.6;
+        items[i].style.display='block';
+      }
     }
     if(width<=600){
       if(items[active-1]){
@@ -69,7 +69,7 @@ const loadSlider=(active,items)=>{
 const Slider = () => {
   const location = useLocation();
   const [searchParams, setSearchParams] = useSearchParams(); 
-  const [active,setActive]=useState(3);
+  const [active,setActive]=useState(1);
   const items=useRef([]);
   let navigate = useNavigate();
   console.log(location,searchParams)
