@@ -26,7 +26,7 @@ const AboutMeRigth = () => {
           </p>
           <ul>
               <li className='flex-row'><i>Express</i><p style={{display:'flex',fontSize:'xxx-large'}} className='express'><Express /></p></li>
-              <li className='flex-row'><i>Redux</i><p style={{display:'flex',fontSize:'xxx-large'}}><Redux /></p></li>
+              <li className='flex-row'><i>Redux Toolkit</i><p style={{display:'flex',fontSize:'xxx-large'}}><Redux /></p></li>
           </ul>
         </div>
       </div>

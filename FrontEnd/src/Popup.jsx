@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 import axios from "axios";
 import CloseIcon from '@mui/icons-material/Close';
@@ -19,7 +19,14 @@ const Popup = ({setPopupOpen}) => {
   const [formData,setFormData]=useState({});
   const [error,setError]=useState('');
   const [isSubmitting,setIsSubmitting]=useState(false);
-  console.log(id,token);
+  useEffect(()=>{
+    document.addEventListener('keydown',closeOnEsc);
+    return () => document.removeEventListener('keydown',closeOnEsc);
+  },[]);
+  function closeOnEsc(e){
+    if(e.key==="Escape")
+        handleClosePopup(setPopupOpen);
+  }
   const handleSubmit=async(e)=>{
     e.preventDefault();
     if(!validateForm(formData))
@@ -27,7 +34,7 @@ const Popup = ({setPopupOpen}) => {
     if(isSubmitting)
         return;
     setIsSubmitting(true);
-    const {data}=await axios.post('https://portfolio-website-1-m76o.onrender.com/api/email',{
+    const {data}=await axios.post('https://port-folio-website-beige.vercel.app/api/email',{
         id,
         ...formData
     },{headers: {

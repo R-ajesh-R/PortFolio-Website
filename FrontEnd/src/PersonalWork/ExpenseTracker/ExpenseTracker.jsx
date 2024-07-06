@@ -22,6 +22,9 @@ const ExpenseTracker=()=>{
   });
   const [viewBreakUp,setViewBreakUp]=useState({value:false,id:''});
   useEffect(()=>{
+    document.getElementById('content').scrollIntoView({ behavior: 'smooth', block:'center' });
+  },[])
+  useEffect(()=>{
     let budgetValue=JSON.stringify(budget);
     let expenseValue=JSON.stringify(expense);
     localStorage.setItem('expenseValue',expenseValue);

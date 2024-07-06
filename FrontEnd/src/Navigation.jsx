@@ -19,8 +19,7 @@ function handleMouseOver(e){
   })
 }
 async function handleContactMe(setPopupOpen,dispatch){
-  const {data}=await axios.post('https://portfolio-website-1-m76o.onrender.com/token');
-  console.log('dfsdfa',data)
+  const {data}=await axios.post('https://port-folio-website-beige.vercel.app/token');
   dispatch(setID(data.id));
   dispatch(setToken(data.accessToken))
   setPopupOpen(true)
@@ -30,13 +29,13 @@ const Navigation = ({setPopupOpen}) => {
   const dispatch=useDispatch();
   let navigate = useNavigate();
   return (
-    <div className='wrapper' style={{top:'0px',left:'0px',right:'0px',zIndex:'1000'}}>
+    <div id="content" className='wrapper' style={{top:'0px',left:'0px',right:'0px',zIndex:'1000'}}>
       <nav className='navigation'>
       <div className='navigation-name'>Rajesh</div>
       <div className='right-panel'>
       <ul>
         <li className='list' onClick={()=>navigate('/')}>
-          <a href='#'>
+          <a href='/'>
             <span className='navigation-icon' ><HomeIcon /></span>
             <span className='navigation-text'>Home</span>
             <span className='navigation-circle'></span>
@@ -60,7 +59,7 @@ const Navigation = ({setPopupOpen}) => {
             </a>
         </li>
         <li className='list' onClick={()=>handleContactMe(setPopupOpen,dispatch)}>
-            <a href='#'>
+            <a>
               <span className='navigation-icon'><ContactsIcon /></span>
               <span className='navigation-text'>Say Hi!</span>
               <span className='navigation-circle'></span>

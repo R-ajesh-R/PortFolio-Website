@@ -20,6 +20,9 @@ const MultipleEmail = (props) => {
   const [edittableIndex,setEdittableIndex]=useState(null);
   const {searchParams}=props;
   useEffect(()=>{
+    document.getElementById('content').scrollIntoView({ behavior: 'smooth', block:'center' });
+  },[])
+  useEffect(()=>{
     let chipcolor=searchParams.get('chipColor');
     if(chipcolor)
       setChipColor(chipcolor)

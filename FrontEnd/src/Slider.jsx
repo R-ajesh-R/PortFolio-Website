@@ -72,7 +72,6 @@ const Slider = () => {
   const [active,setActive]=useState(1);
   const items=useRef([]);
   let navigate = useNavigate();
-  console.log(location,searchParams)
   useEffect(()=>{
     const itemsList=document.querySelectorAll('.slider .item');
     items.current=itemsList;

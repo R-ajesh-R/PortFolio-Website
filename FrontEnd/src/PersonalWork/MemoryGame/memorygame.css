@@ -102,6 +102,8 @@
     .display-grid{
         width: 400px;
         height: 400px;
+        min-height: 400px;
+        min-width: 300px;
     }
     .flex-row{
         flex-direction: column;
