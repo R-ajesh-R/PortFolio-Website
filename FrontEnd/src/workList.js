@@ -13,6 +13,6 @@ export const workList=[
     },
     {
         title: 'TicTacToe',
-        description: 'A Multiplayer game component designed to have some fun with your friends😅'
+        description: 'A Multiplayer game component designed to have some fun with your friends😅. Please be warned that this specific component takes some time to load due to budget issues...'
     }
 ]

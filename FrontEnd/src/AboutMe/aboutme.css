@@ -35,7 +35,7 @@
     width: 100px;
 }
 
-@media (max-width:480px) {
+@media (max-width:779px) {
     .aboutme-left-right,.aboutme-right-left{
         flex: 100%;
         padding: 0px;
@@ -60,6 +60,9 @@
     .aboutme-right-left{
         margin-bottom: 10px;
     }
+}
+
+@media (max-width:480px) {
     .wd-30{
         margin: 60px 0px;
         padding-bottom: 100px;
