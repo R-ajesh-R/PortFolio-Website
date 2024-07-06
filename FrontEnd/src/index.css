@@ -749,6 +749,10 @@ body::-webkit-scrollbar {
     bottom: 0px;
     top: auto !important;
   }
+  .linkedinicon{
+    bottom: 90px !important;
+    left: -10px;
+  }
   .animate-left-out{
     animation-range: contain 450px;
   }
