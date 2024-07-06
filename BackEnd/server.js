@@ -34,13 +34,6 @@ const io = new Server(server, {
 });
 io.on("connection", (socket) => {
   socket.on("room", ({ roomNumber }, cb) => {
-    console.log(
-      "check",
-      roomNumber &&
-        Rooms.hasOwnProperty(roomNumber) &&
-        Object.keys(Rooms[roomNumber]).length >= 2,
-      Rooms
-    );
     if (
       roomNumber &&
       Rooms.hasOwnProperty(roomNumber) &&
@@ -93,7 +86,6 @@ io.on("connection", (socket) => {
   });
   socket.on("refresh", ({ roomNumberValue }) => {
     socket.to(roomNumberValue).emit("refresh");
-    console.log(`${"Callend"} ${roomNumberValue}1`);
     // socket.leave(roomNumberValue);
     delete Rooms[roomNumberValue];
   });
@@ -126,17 +118,15 @@ function authenticateToken(req, res, next) {
     if (token == null) return res.sendStatus(401);
     jwt.verify(token, process.env.ACCESS_TOKEN, (err, user) => {
       if (err) return res.sendStatus(403);
-      console.log(req.body.id, user);
       if (req.body.id === user) next();
     });
   } catch (error) {
-    console.log("Error in authenticateToken", error);
+    // console.log("Error in authenticateToken", error);
   }
 }
 
 app.post("/api/email", authenticateToken, async (req, res) => {
   try {
-    console.log(req.body);
     const mailOptions = {
       from: {
         name: "Rajesh Portfolio",
@@ -151,7 +141,7 @@ app.post("/api/email", authenticateToken, async (req, res) => {
       .status(200)
       .json({ ResponseStatus: "Message Sent Successfully!!", ...sendEmail });
   } catch (error) {
-    console.log("Error in Post of Email", error);
+    // console.log("Error in Post of Email", error);
   }
 });
 
