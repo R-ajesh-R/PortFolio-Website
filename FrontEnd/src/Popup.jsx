@@ -34,7 +34,7 @@ const Popup = ({setPopupOpen}) => {
     if(isSubmitting)
         return;
     setIsSubmitting(true);
-    const {data}=await axios.post('https://port-folio-website-beige.vercel.app/api/email',{
+    const {data}=await axios.post('https://portfolio-website-1-m76o.onrender.com/api/email',{
         id,
         ...formData
     },{headers: {

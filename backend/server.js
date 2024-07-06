@@ -121,7 +121,7 @@ function authenticateToken(req, res, next) {
       if (req.body.id === user) next();
     });
   } catch (error) {
-    // console.log("Error in authenticateToken", error);
+    console.log("Error in authenticateToken", error);
   }
 }
 
@@ -141,7 +141,7 @@ app.post("/api/email", authenticateToken, async (req, res) => {
       .status(200)
       .json({ ResponseStatus: "Message Sent Successfully!!", ...sendEmail });
   } catch (error) {
-    // console.log("Error in Post of Email", error);
+    console.log("Error in Post of Email", error);
   }
 });
 
@@ -150,10 +150,6 @@ app.use(express.static(path.join(__dirname, "../FrontEnd", "dist")));
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "../FrontEnd", "dist", "index.html"));
 });
-
-// app.get('/',(req,res)=>{
-//   res.send("Hi There!!");
-// })
 
 app.post("/token", (req, res) => {
   const user = uuidv4();
