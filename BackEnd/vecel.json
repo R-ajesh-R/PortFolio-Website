@@ -8,6 +8,5 @@
             "src": "/(.*)",
             "dist": "/"
         }
-    ],
-    "rewrites": [{ "source": "/(.*)", "destination": "/BackEnd" }]
+    ]
 }
