@@ -34,6 +34,7 @@ const MemoryGame = () => {
   useEffect(()=>{
     let valuesFromArray=array(setTwoDArray);
     setTwoDArray(valuesFromArray);
+    document.getElementById('content').scrollIntoView({ behavior: 'smooth', block:'center' });
   },[])
   useEffect(()=>{
     if(Object.keys(selectedCards).length===2){
@@ -78,7 +79,7 @@ const MemoryGame = () => {
     setGameWinStatus(false);
   }
   const clickCardHandler=(idx,innerindex)=>{
-    if(gameWinStatus)
+    if(gameWinStatus || Object.keys(selectedCards).length===2)
       return;
     if(cardStatus[idx][innerindex]===true){
       setError('Pick a card that is not found Yet!');

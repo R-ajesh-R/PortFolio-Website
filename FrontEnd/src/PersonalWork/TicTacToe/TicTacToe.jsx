@@ -33,7 +33,8 @@ const TicTacToe = () => {
   const [roomNumberValue,setRoomNumberValue]=useState('')
   const [winner,setWinner]=useState(null);
   useEffect(()=>{
-    socket=io.connect('https://portfolio-website-1-m76o.onrender.com');
+    socket=io.connect('https://port-folio-website-beige.vercel.app');
+    document.getElementById('content').scrollIntoView({ behavior: 'smooth', block:'center' });
     window.addEventListener('beforeunload',refreshHandler)
     return ()=>{
       window.removeEventListener('beforeunload',refreshHandler)
