@@ -1,11 +1,12 @@
 import React, {useState} from 'react'
 import { v4 as uuidv4 } from 'uuid';
-const CreateBudget = ({setBudget}) => {
+const CreateBudget = ({setBudget,reset}) => {
   const [budgetName,setBudgetName]=useState('');
   const [amount,setAmount]=useState(0);
   const [error,setError]=useState('')
   function handleCreateBudget(e){
     e.preventDefault();
+    reset.current=false;
     setError('');
     if(!budgetName || !amount){
       setError('Please fill all the details...');

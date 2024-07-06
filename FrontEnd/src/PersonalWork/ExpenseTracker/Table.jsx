@@ -59,7 +59,6 @@ const Table = ({expense,setExpense,viewBreakUp}) => {
     })
   }
   let valuesForMap=tempDataList.length > 0 ? tempDataList : currentExpense;
-  console.log(currentExpense,expense,viewBreakUp,sortBase,valuesForMap);
   return (
     currentExpense.length > 0 ? <div className='grid-md'>
       <p style={{color:'white',fontSize:'xx-large'}}>Recent Expenses</p>

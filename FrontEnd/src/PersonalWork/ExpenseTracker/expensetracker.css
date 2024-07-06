@@ -241,4 +241,11 @@ table{
     .cards{
         grid:none;
     }
+    
+}
+
+@media (max-width:800px) {
+    .expense-content{
+        padding-bottom: 55px;
+    }
 }

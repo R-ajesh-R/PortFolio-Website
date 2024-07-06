@@ -1,4 +1,4 @@
-import React,{useEffect, useState} from 'react'
+import React,{useEffect, useRef, useState} from 'react'
 import './expensetracker.css';
 import CreateBudget from './CreateBudget';
 import Expense from './Expense';
@@ -6,6 +6,7 @@ import ExpenseCard from './ExpenseCard';
 import Table from './Table';
 import DeleteIcon from '@mui/icons-material/Delete';
 const ExpenseTracker=()=>{
+  const reset=useRef(null);
   const [budget,setBudget]=useState(()=>{
     let budgetValue=localStorage.getItem('budgetValue');
     if(budgetValue)
@@ -34,6 +35,7 @@ const ExpenseTracker=()=>{
     alert('Do You wish to clear all data..?');
     localStorage.removeItem('expenseValue');
     localStorage.removeItem('budgetValue');
+    reset.current=true;
     setBudget([]);
     setExpense([]);
   }
@@ -44,7 +46,7 @@ const ExpenseTracker=()=>{
     </div>
     <div className="expense-content">
       <div className="flex-gap">
-        <CreateBudget setBudget={setBudget} />
+        <CreateBudget reset={reset} setBudget={setBudget} />
         {budget.length > 0 && <Expense setExpense={setExpense} budget={budget} expense={expense}/>}
       </div>
       <div className='flex-gap cards'>
@@ -53,7 +55,7 @@ const ExpenseTracker=()=>{
           return <ExpenseCard key={idx} viewBreakUp={viewBreakUp} setViewBreakUp={setViewBreakUp} expense={expense} budget={singleBudget}/>
         })}
       </div>
-      {viewBreakUp.value && <Table setExpense={setExpense} viewBreakUp={viewBreakUp} expense={expense} />}
+      {viewBreakUp.value && !reset.current && <Table reset={reset} setExpense={setExpense} viewBreakUp={viewBreakUp} expense={expense} />}
     </div>
   </div>
   )
