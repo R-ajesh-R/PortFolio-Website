@@ -652,7 +652,7 @@ body::-webkit-scrollbar {
 #next,#previous{
   position: absolute;
   top:40%;
-  color: rebeccapurple;
+  color: white;
   background-color: transparent;
   left:50px;
   border: none;
@@ -666,22 +666,23 @@ body::-webkit-scrollbar {
 }
 
 @media (max-width:1450px) and (min-width:1201px) {
-  /* .primary,.primary1,.secondary li{
-    font-size: 55px;
+  .primary,.primary1,.secondary li{
+    font-size: 50px;
     height: 50px;
   }
   .primary1,.wrapper-main{
     padding-left: 20px;
   }
   .secondary{
-    line-height: 55px;
+    line-height: 50px;
     height: 50px;
+    margin-top:10px ;
   }
   @keyframes slide {
     100% {
         top: -100px;
     }
-  } */
+  }
 }
 
 @media (max-width:1200px) and (min-width:780px) {
@@ -717,9 +718,13 @@ body::-webkit-scrollbar {
   .primary,.primary1,.secondary li{
     font-size: 30px;
   }
+  .primary1{
+    text-align: center;
+  }
   .wrapper-main{
     width: 93vw;
     padding-left: 50px;
+    justify-content: center;
   }
   .secondary{
     height: 60px;
@@ -799,4 +804,22 @@ body::-webkit-scrollbar {
   margin-top: 10px;
   height: auto;
   width: 50%;
+}
+
+.toaster{
+  color: white;
+  z-index: 10;
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  background-color: green;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 5px;
+  animation: toaster 0.7s;
+}
+
+@keyframes toaster {
+  from{transform: translateX(100%);}
+  to{transform: translateX(0);}
 }

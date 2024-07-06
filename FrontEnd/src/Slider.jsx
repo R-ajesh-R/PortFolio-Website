@@ -85,8 +85,12 @@ const Slider = () => {
     loadSlider(active,items.current)
   },[active])
   const redirect=(route)=>{
+    if(route==="TicTacToe"){
+      window.location.href=`https://portfolio-website-1-m76o.onrender.com/works?component=${route}`
+    }else{
     route=route.replace(/\n/,'');
     navigate(`/works?component=${route}`,{ replace:true });
+    }
   }
   return (
     <div className="slider">

@@ -7,8 +7,6 @@ import ExpenseTracker from "./ExpenseTracker/ExpenseTracker";
 export const components = {
     multipleemail: MultipleEmail,
     memorygame: MemoryGame,
-    multipleselect: MultipleSelect,
-    todo: Todo,
     tictactoe: TicTacToe,
     expensetracker: ExpenseTracker
 }

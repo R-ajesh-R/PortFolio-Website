@@ -3,7 +3,10 @@ import ReactDOM from 'react-dom';
 import axios from "axios";
 import CloseIcon from '@mui/icons-material/Close';
 import { useSelector } from 'react-redux';
+import { useForm } from '@formspree/react';
+import Toaster from './PersonalWork/Toaster';
 import './popup.css';
+
 function handleClosePopup(setPopupOpen){
     document.getElementById('root').style.removeProperty("position","fixed");
     setPopupOpen(false)
@@ -14,43 +17,55 @@ function validateForm(data){
     return false;
 }
 const Popup = ({setPopupOpen}) => {
-  const id = useSelector(state=>state.contactInfo.id);
-  const token = useSelector(state=>state.contactInfo.token);
+//   const id = useSelector(state=>state.contactInfo.id);
+//   const token = useSelector(state=>state.contactInfo.token);
   const [formData,setFormData]=useState({});
+  const [state, handleSubmit] = useForm('xqazkwgz');
   const [error,setError]=useState('');
+  const [toaster,setToaster]=useState(true)
   const [isSubmitting,setIsSubmitting]=useState(false);
   useEffect(()=>{
     document.addEventListener('keydown',closeOnEsc);
     return () => document.removeEventListener('keydown',closeOnEsc);
   },[]);
-  function closeOnEsc(e){
-    if(e.key==="Escape")
-        handleClosePopup(setPopupOpen);
-  }
-  const handleSubmit=async(e)=>{
-    e.preventDefault();
-    if(!validateForm(formData))
-        return setError('Please fll in all Mandatory fields...');
-    if(isSubmitting)
-        return;
-    setIsSubmitting(true);
-    const {data}=await axios.post('https://port-folio-website-beige.vercel.app/api/email',{
-        id,
-        ...formData
-    },{headers: {
-        'Authorization': `Bearer ${token}` 
-      }});
-    if(data.ResponseStatus==="Message Sent Successfully!!"){
+  useEffect(()=>{
+    if(state.succeeded){
         document.getElementById('popupContent').classList.toggle('drop-popup');
         setTimeout(()=>{
             setPopupOpen(false);
             document.getElementById('root').style.removeProperty("position","fixed");
         },3000)
     }
-}
+  },[state]);
+  function closeOnEsc(e){
+    if(e.key==="Escape")
+        handleClosePopup(setPopupOpen);
+  }
+//   const handleSubmit=async(e)=>{
+//     e.preventDefault();
+//     if(!validateForm(formData))
+//         return setError('Please fll in all Mandatory fields...');
+//     if(isSubmitting)
+//         return;
+//     setIsSubmitting(true);
+//     const {data}=await axios.post('https://formspree.io/f/xqazkwgz',{
+//         id,
+//         ...formData
+//     },{headers: {
+//         'Authorization': `Bearer ${token}` 
+//       }});
+//     if(data.ResponseStatus==="Message Sent Successfully!!"){
+//         document.getElementById('popupContent').classList.toggle('drop-popup');
+//         setTimeout(()=>{
+//             setPopupOpen(false);
+//             document.getElementById('root').style.removeProperty("position","fixed");
+//         },3000)
+//     }
+// }
   return ReactDOM.createPortal(
     <>
         <div className="popup" style={{overflow:'hidden'}}></div>
+        {state.succeeded && toaster && <Toaster setToaster={setToaster} />}
         <div className='popupContent-center'>
             <div id='popupContent' className='popup-content'>
                     <div className='inline-flex-last popup-form1'>
@@ -93,7 +108,7 @@ const Popup = ({setPopupOpen}) => {
                     rows={5}
                     value={formData.message ? formData.message : ''} 
                     onChange={(e)=>{if(error!=='')setError('');setFormData({...formData,[e.target.name]:e.target.value})}} />
-                    <button disabled={isSubmitting} type='submit' style={{display:'flex',alignItems:'center',justifyContent:'space-around'}}>Submit {isSubmitting && <span className='loader'></span>}</button>
+                    <button disabled={state.submitting} type='submit' style={{display:'flex',alignItems:'center',justifyContent:'space-around'}}>Submit {isSubmitting && <span className='loader'></span>}</button>
                     {error !== '' ? <p className='error-style'>{error}</p> : null}
                 </form>
             </div>

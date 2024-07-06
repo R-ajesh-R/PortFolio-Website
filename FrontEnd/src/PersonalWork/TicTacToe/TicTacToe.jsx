@@ -1,12 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import './tictactoe.css';
 import io from 'socket.io-client';
-import axios from "axios";
 let socket;
-let Translation={
-  'Please wait while your friend is trying to join...': "waiting",
-  'Let\'s Begin': "start"
-}
 const winningCombination=[
   [0,1,2],
   [3,4,5],
@@ -33,7 +28,7 @@ const TicTacToe = () => {
   const [roomNumberValue,setRoomNumberValue]=useState('')
   const [winner,setWinner]=useState(null);
   useEffect(()=>{
-    socket=io.connect('https://port-folio-website-beige.vercel.app');
+    socket=io.connect('https://portfolio-website-1-m76o.onrender.com');
     document.getElementById('content').scrollIntoView({ behavior: 'smooth', block:'center' });
     window.addEventListener('beforeunload',refreshHandler)
     return ()=>{

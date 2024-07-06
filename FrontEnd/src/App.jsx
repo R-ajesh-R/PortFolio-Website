@@ -5,10 +5,15 @@ import Home from './Home.jsx';
 import Works from './Works.jsx';
 import { Route, Routes } from 'react-router-dom';
 import Navigation from './Navigation.jsx';
+import io from 'socket.io-client';
+let socket;
 function App() {
   const [popupOpen,setPopupOpen]=useState(false);
   useEffect(()=>{
     const innerMouse=document.getElementById('inner-mouse');
+    (async function(){
+      socket=io.connect('https://portfolio-website-1-m76o.onrender.com');
+    })();
     window.onmousemove=e=>{
       const x=e.clientX - innerMouse.offsetWidth / 2;
       const y=e.clientY - innerMouse.offsetHeight/2;
