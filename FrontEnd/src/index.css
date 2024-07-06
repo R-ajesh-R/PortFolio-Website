@@ -772,6 +772,22 @@ body::-webkit-scrollbar {
   }
 }
 
+@media (max-width:380px) {
+  .flex-center-center-column{
+    padding-top: 20px;
+    margin-top: 20px;
+  }
+  .primary, .primary1, .secondary li{
+    font-size: 25px;
+  }
+  .animate-left-out{
+    animation-range: contain 500px;
+  }
+  .primary{
+    padding-top: 10px;
+  }
+}
+
 .white{
   color: white;
 }
