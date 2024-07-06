@@ -71,27 +71,35 @@ const Slider = () => {
   const [searchParams, setSearchParams] = useSearchParams(); 
   const [active,setActive]=useState(1);
   const items=useRef([]);
+  const activeElement=useRef(active);
   let navigate = useNavigate();
   useEffect(()=>{
     const itemsList=document.querySelectorAll('.slider .item');
     items.current=itemsList;
     loadSlider(active,items.current)
-    window.addEventListener('resize', ()=>loadSlider(active,items.current));
+    window.addEventListener('resize', handleResize);
     return () => {
-      window.removeEventListener('resize', ()=>loadSlider(active,items.current));
+      window.removeEventListener('resize', handleResize);
     };
-  },[])
+  },[]);
+  const handleResize = () =>{
+    loadSlider(activeElement.current,items.current)
+  }
   useEffect(()=>{
-    loadSlider(active,items.current)
+    activeElement.current=active;
+    loadSlider(active,items.current);
   },[active])
   const redirect=(route)=>{
+    route=route.replace(/\n/,'');
     if(route==="TicTacToe"){
       window.location.href=`https://portfolio-website-1-m76o.onrender.com/works?component=${route}`
+    }else if(route==="MultipleEmail"){
+      navigate(`/works?component=${route}&chipColor=#41B06E`,{ replace:true });
     }else{
-    route=route.replace(/\n/,'');
     navigate(`/works?component=${route}`,{ replace:true });
     }
   }
+  console.log()
   return (
     <div className="slider">
       {workList.map((el,idx)=>{
@@ -102,8 +110,8 @@ const Slider = () => {
           </div>
         )
       })}
-      <button type='button' id="previous" disabled={active===0 ? true : false} onClick={()=>setActive(active-1)}>{`<`}</button>
-      <button type='button' id="next" disabled={active===items.current.length - 1 ? true : false} onClick={()=>setActive(active+1)}>{`>`}</button>
+      {!(active===0) && <button type='button' id="previous" onClick={()=>setActive(active-1)}>{`<`}</button>}
+      {!(active===items.current.length - 1) && <button type='button' id="next" onClick={()=>setActive(active+1)}>{`>`}</button>}
     </div>
   )
 }
