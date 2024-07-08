@@ -72,6 +72,7 @@ const Slider = () => {
   const [active,setActive]=useState(1);
   const items=useRef([]);
   const activeElement=useRef(active);
+  const clicked=useRef(false)
   let navigate = useNavigate();
   useEffect(()=>{
     const itemsList=document.querySelectorAll('.slider .item');
@@ -99,13 +100,12 @@ const Slider = () => {
     navigate(`/works?component=${route}`,{ replace:true });
     }
   }
-  console.log()
   return (
     <div className="slider">
       {workList.map((el,idx)=>{
         return (
-          <div key={idx} onClick={()=>redirect(el.title)} className="item">
-            <h1>{el.title}</h1>
+          <div key={idx} className="item">
+            <h1 style={{color:'blue',cursor:'pointer'}} onClick={()=>redirect(el.title)}>{el.title}</h1>
             <p>{el.description}</p>
           </div>
         )
