@@ -9,7 +9,7 @@ const RightPanel = () => {
             </div>
             <div className='profile-wrapper'>
                 <p style={{color:'white'}}><strong>PROFILE</strong></p>
-                <p style={{color:'white'}}>An Aeronautical engineering graduate who completed his B.E. from Bannari Amman Institute of Technology and now pursuing my career in IT. I have 2.6 year's experience in web development and am well versed in React Js, Java script, HTML, CSS, Node JS and Express.</p>
+                <p style={{color:'white'}}>Results-driven Full Stack Developer with over 2.5 years of experience in designing, developing, and maintaining web applications using Node.js and React. Strong problem-solving skills and a passion for learning and implementing new technologies. Proven track record of collaborating effectively with cross-functional teams to deliver high-quality software solutions on time and within budget.</p>
             </div>
         </div>
     </div>
