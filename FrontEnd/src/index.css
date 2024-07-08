@@ -814,6 +814,9 @@ body::-webkit-scrollbar {
   .primary{
     padding-top: 10px;
   }
+  .profile-wrapper{
+    width: 75% !important;
+  }
 }
 
 @media (max-width:401px) {
