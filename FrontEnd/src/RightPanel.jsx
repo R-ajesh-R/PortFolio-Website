@@ -9,7 +9,7 @@ const RightPanel = () => {
             </div>
             <div className='profile-wrapper'>
                 <p style={{color:'white'}}><strong>PROFILE</strong></p>
-                <p style={{color:'white'}}>Results-driven Full Stack Developer with over 2.5 years of experience in designing, developing, and maintaining web applications using Node.js and React. Strong problem-solving skills and a passion for learning and implementing new technologies. Proven track record of collaborating effectively with cross-functional teams to deliver high-quality software solutions on time and within budget.</p>
+                <p style={{color:'white'}}>Results-driven Full Stack Developer with over 2.5 years of experience in designing, developing, and maintaining web applications using Node.js and React. Strong problem-solving skills and a passion for learning and implementing new technologies. Proven track record of collaborating effectively with cross-functional teams to deliver high-quality software solutions on stipulated time.</p>
             </div>
         </div>
     </div>
